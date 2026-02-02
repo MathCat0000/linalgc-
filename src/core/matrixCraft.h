@@ -8,18 +8,31 @@
 
 
 typedef struct {
-
     double **data;
     int rows;
     int cols;
 } Matrix;
 
 
- typedef enum
-{
-     /* error codes */
-}MatrixErr;
+typedef enum {
+    MATRIX_OK = 0,
+    MATRIX_ERR_INVALID_DIM,
+    MATRIX_ERR_ALLOC,
+    MATRIX_ERR_DIM_MISMATCH,
+    MATRIX_ERR_NOT_SQUARE,
+    MATRIX_ERR_SINGULAR,
+    MATRIX_ERR_OUT_OF_BOUNDS
+} MatrixErr;
 
+
+Matrix   *matrix_create(int rows, int cols, MatrixErr *err);
+void      matrix_free(Matrix *m);
+
+MatrixErr matrix_get(const Matrix *m, int i, int j, double *out);
+MatrixErr matrix_set(Matrix *m, int i, int j, double value);
+
+MatrixErr matrix_add(const Matrix *a, const Matrix *b, Matrix *out);
+MatrixErr matrix_mul(const Matrix *a, const Matrix *b, Matrix *out);
 
 
 
@@ -31,6 +44,9 @@ typedef struct {
 // Constructing and destroying a matrix struct
 //
 // *****************************************************************************
+
+
+
 
 // *****************************************************************************
 //

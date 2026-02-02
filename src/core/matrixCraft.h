@@ -6,6 +6,26 @@
 //
 // *****************************************************************************
 
+
+typedef struct {
+
+    double **data;
+    int rows;
+    int cols;
+} Matrix;
+
+
+ typedef enum
+{
+     /* error codes */
+}MatrixErr;
+
+
+
+
+
+
+
 // *****************************************************************************
 //
 // Constructing and destroying a matrix struct
